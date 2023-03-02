@@ -56,13 +56,13 @@ sequelize.sync({force: false}).then(()=>{
 
 
   //testing api
-  const port = PORT || 8080;
+  const port = PORT || 8081;
 
   app.get('/', (req,res)=>{
     res.send("Welcome to express");
   });
 
-  app.listen(PORT, () => {
+  app.listen(port, () => {
     console.log(`Express Server is listening on url http://localhost:${port}`);
   });
   module.exports.sequelize = sequelize;
