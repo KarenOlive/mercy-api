@@ -1,0 +1,4 @@
+.env
+.svn
+node_modules
+dbconfig.js
