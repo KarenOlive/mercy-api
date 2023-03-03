@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const checkAuth = require('../../helpers/auth');
+const checkAuth = require('../../../helpers/auth');
 const { add_Branch } = require('../controllers/branchController');
 const { getAllCustomers, add_customer } = require('../controllers/customerController');
 

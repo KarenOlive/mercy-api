@@ -14,9 +14,9 @@ const sequelize = new Sequelize(SQL_DATABASE, SQL_USER, SQL_PASSWORD, {
     }
     });
 
-const Customer = require('../../models/Customer')(sequelize, DataTypes)
-const Branch = require('../../models/Branch')(sequelize, DataTypes)
-const Orders = require('../../models/Orders')(sequelize, DataTypes)
+const Customer = require('../../../models/Customer')(sequelize, DataTypes)
+const Branch = require('../../../models/Branch')(sequelize, DataTypes)
+const Orders = require('../../../models/Orders')(sequelize, DataTypes)
 
 
 exports.getAllOrders = async(req, res)=>{

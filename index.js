@@ -10,8 +10,8 @@ const {PORT, HOST, HOST_URL, SQL_USER, SQL_DATABASE, SQL_SERVER, SQL_PASSWORD, S
 
 const app = express();
 
-const userRoutes = require('./v1/routes/UserRoutes');
-const allRoutes = require('./v1/routes/allRoutes');
+const userRoutes = require('./src/v1/routes/UserRoutes');
+const allRoutes = require('./src/v1/routes/allRoutes');
 // middleware
 app.use(express.json());
 app.use(cors());

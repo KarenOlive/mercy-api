@@ -21,8 +21,8 @@ const sequelize = new Sequelize(SQL_DATABASE, SQL_USER, SQL_PASSWORD, {
 
 
 
-    var User = require('../../models/Users')(sequelize, DataTypes)
-const {userSignUp, userLogIn} = require('../../helpers/validation');
+    var User = require('../../../Storemodels/Users')(sequelize, DataTypes)
+const {userSignUp, userLogIn} = require('../../../helpers/validation');
    
    
 exports.userSignup = async(req, res)=>{

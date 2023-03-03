@@ -14,7 +14,7 @@ const sequelize = new Sequelize(SQL_DATABASE, SQL_USER, SQL_PASSWORD, {
     }
     });
 
-    const Branch = require('../../models/Branch')(sequelize, DataTypes)
+    const Branch = require('../../../models/Branch')(sequelize, DataTypes)
 
     exports.add_Branch = async(req,res)=>{
         const { BranchName} = req.body

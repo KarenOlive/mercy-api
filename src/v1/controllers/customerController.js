@@ -15,7 +15,7 @@ const sequelize = new Sequelize(SQL_DATABASE, SQL_USER, SQL_PASSWORD, {
     }
     });
 
-var Customer = require('../../models/Customer')(sequelize, DataTypes)
+var Customer = require('../../../models/Customer')(sequelize, DataTypes)
 
 exports.getAllCustomers = async (req, res)=>{ 
 

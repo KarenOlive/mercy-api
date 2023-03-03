@@ -14,8 +14,8 @@ const sequelize = new Sequelize(SQL_DATABASE, SQL_USER, SQL_PASSWORD, {
     }
     });
 
-var Item = require('../../models/Item')(sequelize, DataTypes)
-const Supplier = require('../../models/Supplier')(sequelize, DataTypes)
+var Item = require('../../../models/Item')(sequelize, DataTypes)
+const Supplier = require('../../../models/Supplier')(sequelize, DataTypes)
 
 
 exports.getAllItems = async (req, res)=>{ 

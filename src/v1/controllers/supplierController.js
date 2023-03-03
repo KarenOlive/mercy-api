@@ -15,7 +15,7 @@ const sequelize = new Sequelize(SQL_DATABASE, SQL_USER, SQL_PASSWORD, {
     }
     });
 
-var Supplier = require('../../models/Supplier')(sequelize, DataTypes)
+var Supplier = require('../../../models/Supplier')(sequelize, DataTypes)
 
 exports.getAllSuppliers = async (req, res)=>{ 
 

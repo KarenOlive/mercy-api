@@ -15,7 +15,7 @@ const sequelize = new Sequelize(SQL_DATABASE, SQL_USER, SQL_PASSWORD, {
     }
     });
 
-var Department = require('../../models/Department')(sequelize, DataTypes)
+var Department = require('../../../models/Department')(sequelize, DataTypes)
 
 exports.getAllDepartments = async (req, res)=>{ 
 

@@ -14,8 +14,8 @@ const sequelize = new Sequelize(SQL_DATABASE, SQL_USER, SQL_PASSWORD, {
     }
     });
 
-var Store = require('../../models/Store')(sequelize, DataTypes)
-const Branch = require('../../models/Branch')(sequelize, DataTypes)
+var Store = require('../../../models/Store')(sequelize, DataTypes)
+const Branch = require('../../../models/Branch')(sequelize, DataTypes)
 
 
 exports.getAllStores = async (req, res)=>{ 

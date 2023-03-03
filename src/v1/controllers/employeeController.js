@@ -14,10 +14,10 @@ const sequelize = new Sequelize(SQL_DATABASE, SQL_USER, SQL_PASSWORD, {
     }
     });
 
-const Employee = require('../../models/Employee')(sequelize, DataTypes)
-const Department = require('../../models/Employee')(sequelize, DataTypes)
-const UserRole = require('../../models/UserRole')(sequelize, DataTypes)
-const Branch = require('../../models/Branch')(sequelize, DataTypes)
+const Employee = require('../../../models/Employee')(sequelize, DataTypes)
+const Department = require('../../../models/Employee')(sequelize, DataTypes)
+const UserRole = require('../../../models/UserRole')(sequelize, DataTypes)
+const Branch = require('../../../models/Branch')(sequelize, DataTypes)
 
 // const {Department, Users, Branch } = require('../../models/init-models')
 
