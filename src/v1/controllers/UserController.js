@@ -21,7 +21,7 @@ const sequelize = new Sequelize(SQL_DATABASE, SQL_USER, SQL_PASSWORD, {
 
 
 
-    var User = require('../../../Storemodels/Users')(sequelize, DataTypes)
+var User = require('../../../models/Users')(sequelize, DataTypes)
 const {userSignUp, userLogIn} = require('../../../helpers/validation');
    
    
