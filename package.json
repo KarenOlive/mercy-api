@@ -2,9 +2,9 @@
   "name": "mercydecor_restapi",
   "version": "1.0.0",
   "config": {},
-  "description": "https://github.com/KarenOlive/mercy-api",
+  "description": "Express Nodejs Rest API",
   "main": "index.js",
-  "repository": {},
+ 
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
@@ -15,8 +15,9 @@
     "express",
     "mssql"
   ],
-  "author": "",
-  "license": "ISC",
+  "repository": "https://github.com/KarenOlive/mercy-api",
+  "author": "Karen Olive",
+  "license": "MIT",
   "dependencies": {
     "async": "^3.2.4",
     "bcrypt": "^5.1.0",
