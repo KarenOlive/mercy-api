@@ -2,16 +2,14 @@
   "name": "mercydecor_restapi",
   "version": "1.0.0",
   "config": {},
-  "engines": {
-    "node": ">=16.16.0"
-  },
-  "description": "",
+  "description": "https://github.com/KarenOlive/mercy-api",
   "main": "index.js",
+  "repository": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "build": "npm run build index.js"
-  },
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+   },
   "keywords": [
     "node",
     "express",
@@ -34,6 +32,9 @@
     "sequelize-auto": "^0.8.8",
     "sequelize-joi": "^2.0.1",
     "tedious": "^15.1.3"
+  },
+  "engines": {
+    "node": ">=16.16.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
