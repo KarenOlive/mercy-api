@@ -17,7 +17,7 @@ const sequelize = new Sequelize(SQL_DATABASE, SQL_USER, SQL_PASSWORD, {
     const Branch = require('../../../models/Branch')(sequelize, DataTypes)
 
     exports.add_Branch = async(req,res)=>{
-        const { BranchName} = req.body
+        const { BranchName, BranchLocation } = req.body
         //Checking if department is already in the database
         const branchExists = await Branch.findOne({ where: { BranchName: BranchName} })
         if(branchExists) return res.status(400).send(`This Branch: ${BranchName} already exists`);
@@ -25,7 +25,7 @@ const sequelize = new Sequelize(SQL_DATABASE, SQL_USER, SQL_PASSWORD, {
         try{
          const branch = await Branch.create({
              BranchName: BranchName,
-             
+             BranchLocation: BranchLocation
          });
          res.status(200).json({
              branch: branch,
