@@ -12,7 +12,7 @@ const { getAllStores, add_store } = require('../controllers/storeController');
 const { getAllSuppliers, add_supplier } = require('../controllers/supplierController');
 
 //Employees
-router.get('/employee', checkAuth, getAllEmployees);
+router.get('/employees', checkAuth, getAllEmployees);
 
 //Departments
 router.get('/departments', checkAuth, getAllDepartments);

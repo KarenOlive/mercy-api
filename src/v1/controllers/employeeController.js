@@ -2,7 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const dotenv = require('dotenv');
 dotenv.config();
 const {PORT, HOST, HOST_URL, SQL_USER, SQL_DATABASE, SQL_SERVER, SQL_PASSWORD, SQL_HOST, JWT_KEY} = process.env;
-
+const initModels = require("../../../models/init-models");
 const sequelize = new Sequelize(SQL_DATABASE, SQL_USER, SQL_PASSWORD, {
     host: SQL_HOST,
     dialect: 'mssql',
@@ -13,36 +13,37 @@ const sequelize = new Sequelize(SQL_DATABASE, SQL_USER, SQL_PASSWORD, {
         idle: 100000
     }
     });
+    const models = initModels(sequelize);
 
-const Employee = require('../../../models/Employee')(sequelize, DataTypes)
-const Department = require('../../../models/Employee')(sequelize, DataTypes)
-const UserRole = require('../../../models/UserRole')(sequelize, DataTypes)
-const Branch = require('../../../models/Branch')(sequelize, DataTypes)
 
-// const {Department, Users, Branch } = require('../../models/init-models')
+
+
 
     exports.getAllEmployees = async(req, res)=>{
         
-        await Employee.findAndCountAll({
+        await models.Employee.findAll({
             include: [
-                {model: Branch, required: true},
-                {model: Department, required: true},
-                {model: UserRole, as: 'Roles', required: true},
+                {model: models.Branch, as: 'Branch', required: true},
+                {model: models.Department, as: 'Department', required: true},
+                {model: models.UserRole, as: 'Roles', required: true},
 
              ],
-            limit: 10})
+             limit: 2
+            })
             .then(employee=>{
             res.status(200).json({  
-             employee ,
-             message: `${Employee.count()}`              
+                count: employee.length,
+             employee,
+                        
             });
-            console.log(`There are ${Employee.count()} projects`)
+            console.log(`There are ${employee.length} employees`)
              
         }
         )
         .catch((err)=>{
             res.json({
-                message : "Can not find users requested"
+                err,
+                message : "Can not find the employees requested"
             })
             console.log(err)
         });
@@ -54,17 +55,17 @@ const Branch = require('../../../models/Branch')(sequelize, DataTypes)
         const {userId} = req.userData;
 
        try{
-        const role = await UserRole.findOne({
+        const role = await models.UserRole.findOne({
             where: {Role: Role}
         });
-        const department = await Department.findOne({
+        const department = await models.Department.findOne({
             where: {DepartmentId: DepartmentId}
         });
-        const branch = await Branch.findOne({
+        const branch = await models.Branch.findOne({
             where: {BranchNo: BranchNo}
         });
 
-        const employee = await Employee.create({
+        const employee = await models.Employee.create({
             EmployeeName: EmployeeName,
             EmployeeContact: EmployeeContact,
             DateOfBirth: DateOfBirth,
@@ -102,22 +103,22 @@ const Branch = require('../../../models/Branch')(sequelize, DataTypes)
        
      try{
 
-        const emp = await Employee.findOne({
+        const emp = await models.Employee.findOne({
             where: { EmployeeId: employeeId }
         })
         if (!emp) return res.status(404).send(`No employee with id: ${employeeId} 🤗`);
 
-        const role = await UserRole.findOne({
+        const role = await models.UserRole.findOne({
             where: {Role: Role}
         });
-        const department = await Department.findOne({
+        const department = await models.Department.findOne({
             where: {DepartmentId: DepartmentId}
         });
-        const branch = await Branch.findOne({
+        const branch = await models.Branch.findOne({
             where: {BranchNo: BranchNo}
         });
 
-            const updatedEmployee = await Employee.update({ 
+            const updatedEmployee = await models.Employee.update({ 
                 EmployeeName: EmployeeName,
                 EmployeeContact: EmployeeContact,
                 DateOfBirth: DateOfBirth,
@@ -152,14 +153,14 @@ const Branch = require('../../../models/Branch')(sequelize, DataTypes)
 
     exports.delete_employee = async(req, res)=>{
         const employeeId = req.params.employeeid
-        const emp = await Employee.findOne({
+        const emp = await models.Employee.findOne({
             where: { EmployeeId: employeeId }
         })
         if (!emp) return res.status(404).send(`No employee with id: ${employeeId} 🤗`);
         
 
     try{
-        const result =  await Employee.destroy({
+        const result =  await models.Employee.destroy({
             where: { EmployeeId: employeeId},
           })
           res.status(200).json({

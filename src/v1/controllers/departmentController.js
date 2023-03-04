@@ -21,9 +21,10 @@ exports.getAllDepartments = async (req, res)=>{
 
     await Department.findAll({}).then(departments=>{
      res.status(200).json({
-         
+        count: departments.length,
          departments,
-         message: `There are ${Department.count()} departments`
+         
+         message: `There are ${departments.length} departments`
          
      });
       

@@ -30,7 +30,7 @@ function initModels(sequelize) {
 
   UserRole.belongsTo(AccessRights, { as: "Rights_AccessRight", foreignKey: "Rights"});
   AccessRights.hasMany(UserRole, { as: "UserRoles", foreignKey: "Rights"});
-  Employee.belongsTo(Branch, { as: "BranchNo_Branch", foreignKey: "BranchNo"});
+  Employee.belongsTo(Branch, { as: "Branch", foreignKey: "BranchNo"});
   Branch.hasMany(Employee, { as: "Employees", foreignKey: "BranchNo"});
   Orders.belongsTo(Branch, { as: "BranchNo_Branch", foreignKey: "BranchNo"});
   Branch.hasMany(Orders, { as: "Orders", foreignKey: "BranchNo"});
@@ -50,7 +50,7 @@ function initModels(sequelize) {
   Store.hasMany(StoreItem, { as: "StoreItems", foreignKey: "StoreId"});
   Item.belongsTo(Supplier, { as: "Supplier", foreignKey: "SupplierId"});
   Supplier.hasMany(Item, { as: "Items", foreignKey: "SupplierId"});
-  Employee.belongsTo(UserRole, { as: "Role_UserRole", foreignKey: "Role"});
+  Employee.belongsTo(UserRole, { as: "Roles", foreignKey: "Role"});
   UserRole.hasMany(Employee, { as: "Employees", foreignKey: "Role"});
   Employee.belongsTo(Users, { as: "User", foreignKey: "UserId"});
   Users.hasMany(Employee, { as: "Employees", foreignKey: "UserId"});

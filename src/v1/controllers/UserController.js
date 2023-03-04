@@ -125,19 +125,20 @@ exports.userLogin = async (req, res)=>{
 
     exports.getAllUsers = async (req, res)=>{ 
 
-       await User.findAll().then(users=>{
+       await User.findAndCountAll({
+        limit: 2
+       }).then(users=>{
         res.status(200).json({
             count: users.length,
             users
-            
+                       
         });
          
         //res.sendStatus(200);
        // console.log(users);
-    }
-    )
-    .catch((err)=>{
+    }).catch((err)=>{
         res.json({
+            err,
             message : "Can not find users requested"
         })
         console.log(err)
